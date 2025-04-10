@@ -2,7 +2,7 @@ import { React, useState, useEffect } from 'react'
 import Modal from "../Modal"
 import io from 'socket.io-client'
 import axios from 'axios';
-const socket = io.connect("http://localhost:5000")
+const socket = io.connect("https://tenis-backend.vercel.app/")
 
 
 
@@ -29,19 +29,19 @@ const NewGame = () => {
 
 
     function getPlayers() {
-        axios.get(`http://localhost:5000/api/players`).
+        axios.get(`https://tenis-backend.vercel.app/api/players`).
             then(players => setPlayers(players.data))
             .catch(err => console.log(err))
     }
 
     function getTournaments() {
-        axios.get(`http://localhost:5000/api/tournaments`).
+        axios.get(`https://tenis-backend.vercel.app/api/tournaments`).
             then(tournaments => setTournaments(tournaments.data))
             .catch(err => console.log(err))
     }
 
     const handleNewgame = async () => {
-        const response = await fetch(`http://localhost:5000/api/currentgame/newgame/67e5c15fa1d92ba58cfd680d`, {
+        const response = await fetch(`https://tenis-backend.vercel.app/api/currentgame/newgame/67e5c15fa1d92ba58cfd680d`, {
             method: "PUT", // or "PATCH"
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ player1: newGame.player1, player2: newGame.player2, tournament: newGame.tournament, result1: 0, result2: 0, gameResult1: 0, gameResult2: 0 }), // Send the new `result`
