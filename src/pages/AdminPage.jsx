@@ -5,7 +5,7 @@ import Modal from '../components/Modal';
 import NewGame from '../components/forms/NewGame';
 import io from 'socket.io-client'
 import Sidebar from '../components/Sidebar';
-const socket = io.connect("http://localhost:5000")
+const socket = io.connect("https://tenis-backend.vercel.app")
 import { Plus, Minus } from 'lucide-react';
 
 const AdminPage = () => {
@@ -55,7 +55,7 @@ const AdminPage = () => {
 
 
   const getResult = async () => {
-    const response = await fetch(`https://todo-rho-swart-35.vercel.app/api/currentgame/currentgame/67e5c15fa1d92ba58cfd680d`)
+    const response = await fetch(`https://tenis-backend.vercel.app/api/currentgame/currentgame/67e5c15fa1d92ba58cfd680d`)
     const resultats = await response.json();
     setResult1(resultats.result1)
     setResult2(resultats.result2)
@@ -122,13 +122,13 @@ const AdminPage = () => {
   const updateResult = async (num, bla) => {
     if (num == 1) {
       if (bla === 0) {
-        const response = await fetch(`https://todo-rho-swart-35.vercel.app/api/currentgame/result1/67e5c15fa1d92ba58cfd680d`, {
+        const response = await fetch(`https://tenis-backend.vercel.app/api/currentgame/result1/67e5c15fa1d92ba58cfd680d`, {
           method: "PUT", // or "PATCH"
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ result1: 0 }), // Send the new `result`
         });
       } else {
-        const response = await fetch(`https://todo-rho-swart-35.vercel.app/api/currentgame/result1/67e5c15fa1d92ba58cfd680d`, {
+        const response = await fetch(`https://tenis-backend.vercel.app/api/currentgame/result1/67e5c15fa1d92ba58cfd680d`, {
           method: "PUT", // or "PATCH"
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ result1: result1 + 1 }), // Send the new `result`
@@ -137,13 +137,13 @@ const AdminPage = () => {
 
     } else {
       if (bla === 0) {
-        const response = await fetch(`https://todo-rho-swart-35.vercel.app/api/currentgame/result2/67e5c15fa1d92ba58cfd680d`, {
+        const response = await fetch(`https://tenis-backend.vercel.app/api/currentgame/result2/67e5c15fa1d92ba58cfd680d`, {
           method: "PUT", // or "PATCH"
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ result2: 0 }), // Send the new `result`
         });
       } else {
-        const response = await fetch(`https://todo-rho-swart-35.vercel.app/api/currentgame/result2/67e5c15fa1d92ba58cfd680d`, {
+        const response = await fetch(`https://tenis-backend.vercel.app/api/currentgame/result2/67e5c15fa1d92ba58cfd680d`, {
           method: "PUT", // or "PATCH"
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ result2: result2 + 1 }), // Send the new `result`
@@ -156,13 +156,13 @@ const AdminPage = () => {
   const updateSetResult = async (num, reset) => {
     if (num == 1) {
       if (reset === 0) {
-        const response = await fetch(`https://todo-rho-swart-35.vercel.app/set1/67e5c15fa1d92ba58cfd680d`, {
+        const response = await fetch(`https://tenis-backend.vercel.app/set1/67e5c15fa1d92ba58cfd680d`, {
           method: "PUT", // or "PATCH"
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ gameResult1: 0 }), // Send the new `result`
         });
       } else {
-        const response = await fetch(`https://todo-rho-swart-35.vercel.app/set1/67e5c15fa1d92ba58cfd680d`, {
+        const response = await fetch(`https://tenis-backend.vercel.app/set1/67e5c15fa1d92ba58cfd680d`, {
           method: "PUT", // or "PATCH"
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ gameResult1: gameResult1 + 1 }), // Send the new `result`
@@ -171,13 +171,13 @@ const AdminPage = () => {
 
     } else {
       if (reset === 0) {
-        const response = await fetch(`https://todo-rho-swart-35.vercel.app/set2/67e5c15fa1d92ba58cfd680d`, {
+        const response = await fetch(`https://tenis-backend.vercel.app/set2/67e5c15fa1d92ba58cfd680d`, {
           method: "PUT", // or "PATCH"
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ gameResult2: 0 }), // Send the new `result`
         });
       } else {
-        const response = await fetch(`https://todo-rho-swart-35.vercel.app/set2/67e5c15fa1d92ba58cfd680d`, {
+        const response = await fetch(`https://tenis-backend.vercel.app/set2/67e5c15fa1d92ba58cfd680d`, {
           method: "PUT", // or "PATCH"
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ gameResult2: gameResult2 + 1 }), // Send the new `result`
@@ -188,25 +188,25 @@ const AdminPage = () => {
   }
 
   function getPlayers() {
-    axios.get(`https://todo-rho-swart-35.vercel.app/api/players`).
+    axios.get(`https://tenis-backend.vercel.app/api/players`).
       then(players => setPlayers(players.data))
       .catch(err => console.log(err))
   }
 
   function getGames() {
-    axios.get(`https://todo-rho-swart-35.vercel.app/api/game`).
+    axios.get(`https://tenis-backend.vercel.app/api/game`).
       then(games => setGames(games.data))
       .catch(err => console.log(err))
   }
 
   function getTournaments() {
-    axios.get(`https://todo-rho-swart-35.vercel.app/api/tournaments`).
+    axios.get(`https://tenis-backend.vercel.app/api/tournaments`).
       then(tournaments => setTournaments(tournaments.data))
       .catch(err => console.log(err))
   }
 
   const getPlayer = async (id, num) => {
-    const response = await fetch(`https://todo-rho-swart-35.vercel.app/api/players/${id}`)
+    const response = await fetch(`https://tenis-backend.vercel.app/api/players/${id}`)
     const bla = await response.json();
     if (num == 1) {
       setPlayer1name(bla.name)
@@ -217,14 +217,14 @@ const AdminPage = () => {
   }
 
   const getTournament = async (id, num) => {
-    const response = await fetch(`http://localhost:5000/api/tournaments/${id}`)
+    const response = await fetch(`https://tenis-backend.vercel.app/api/tournaments/${id}`)
     const bla = await response.json();
     setTournamentName(bla.title)
 
   }
 
   const saveGame = async () => {
-    const { success, message } = await fetch(`https://todo-rho-swart-35.vercel.app/api/game/`, {
+    const { success, message } = await fetch(`https://tenis-backend.vercel.app/api/game/`, {
       method: "POST", // or "PATCH"
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ player1: player1, player2: player2, result1: gameResult1, result2: gameResult2, tournament: tournament, winner: 1, player1name: player1name, player2name: player2name }),
@@ -252,7 +252,7 @@ const AdminPage = () => {
   }
 
   const handleNewgame = async () => {
-    const response = await fetch(`https://todo-rho-swart-35.vercel.app/api/currentgame/newgame/67e5c15fa1d92ba58cfd680d`, {
+    const response = await fetch(`https://tenis-backend.vercel.app/api/currentgame/newgame/67e5c15fa1d92ba58cfd680d`, {
       method: "PUT", // or "PATCH"
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ player1: newGame.player1, player2: newGame.player2, tournament: newGame.tournament, result1: 0, result2: 0, gameResult1: 0, gameResult2: 0 }), // Send the new `result`

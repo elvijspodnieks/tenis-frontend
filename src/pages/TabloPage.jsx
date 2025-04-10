@@ -4,7 +4,7 @@ import Header from '../components/common/Header'
 import axios from 'axios';
 import { NavLink } from 'react-router-dom';
 import io from 'socket.io-client'
-const socket = io.connect("http://localhost:5000")
+const socket = io.connect("https://tenis-backend.vercel.app")
 
 const TabloPage = () => {
   const [open, setOpen] = useState(false);
@@ -50,7 +50,7 @@ const TabloPage = () => {
 
 
   const getResult = async () => {
-    const response = await fetch(`https://todo-rho-swart-35.vercel.app/api/currentgame/currentgame/67e5c15fa1d92ba58cfd680d`)
+    const response = await fetch(`https://tenis-backend.vercel.app/api/currentgame/currentgame/67e5c15fa1d92ba58cfd680d`)
     const resultats = await response.json();
     setResult1(resultats.result1)
     setResult2(resultats.result2)
