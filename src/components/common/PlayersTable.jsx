@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Edit, Search, Trash2 } from "lucide-react";
 import axios from 'axios';
 import Modal from '../Modal';
-const URI_BACKEND = import.meta.env.VITE_URI_BACKEND;
+const URI_BACKEND = "https://tenis-backend-4rvf.onrender.com/"
 
 
 const PRODUCT_DATA = [
