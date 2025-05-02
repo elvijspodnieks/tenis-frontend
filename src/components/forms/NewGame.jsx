@@ -2,7 +2,7 @@ import { React, useState, useEffect } from 'react'
 import Modal from "../Modal"
 import io from 'socket.io-client'
 import axios from 'axios';
-const URI_BACKEND = import.meta.env.URI_BACKEND;
+const URI_BACKEND = import.meta.env.VITE_URI_BACKEND;
 const socket = io.connect(URI_BACKEND)
 
 

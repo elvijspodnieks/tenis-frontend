@@ -4,7 +4,7 @@ import Header from '../components/common/Header'
 import axios from 'axios';
 import { NavLink } from 'react-router-dom';
 import io from 'socket.io-client'
-const URI_BACKEND = import.meta.env.URI_BACKEND;
+const URI_BACKEND = import.meta.env.VITE_URI_BACKEND;
 const socket = io.connect(URI_BACKEND)
 
 
