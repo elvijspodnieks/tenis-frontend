@@ -2,7 +2,8 @@ import { React, useState, useEffect } from 'react'
 import Modal from "../Modal"
 import io from 'socket.io-client'
 import axios from 'axios';
-const socket = io.connect("https://tenis-backend-4rvf.onrender.com/")
+const URI_BACKEND = import.meta.env.URI_BACKEND;
+const socket = io.connect(URI_BACKEND)
 
 
 
@@ -29,19 +30,19 @@ const NewGame = () => {
 
 
     function getPlayers() {
-        axios.get(`https://tenis-backend-4rvf.onrender.com/api/players`).
+        axios.get(`${URI_BACKEND}api/players`).
             then(players => setPlayers(players.data))
             .catch(err => console.log(err))
     }
 
     function getTournaments() {
-        axios.get(`https://tenis-backend-4rvf.onrender.com/api/tournaments`).
+        axios.get(`${URI_BACKEND}api/tournaments`).
             then(tournaments => setTournaments(tournaments.data))
             .catch(err => console.log(err))
     }
 
     const handleNewgame = async () => {
-        const response = await fetch(`https://tenis-backend-4rvf.onrender.com/api/currentgame/newgame/67e5c15fa1d92ba58cfd680d`, {
+        const response = await fetch(`${URI_BACKEND}api/currentgame/newgame/67e5c15fa1d92ba58cfd680d`, {
             method: "PUT", // or "PATCH"
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ player1: newGame.player1, player2: newGame.player2, tournament: newGame.tournament, result1: 0, result2: 0, gameResult1: 0, gameResult2: 0 }), // Send the new `result`

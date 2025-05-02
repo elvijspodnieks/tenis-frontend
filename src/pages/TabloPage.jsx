@@ -4,7 +4,9 @@ import Header from '../components/common/Header'
 import axios from 'axios';
 import { NavLink } from 'react-router-dom';
 import io from 'socket.io-client'
-const socket = io.connect("https://tenis-backend-4rvf.onrender.com")
+const URI_BACKEND = import.meta.env.URI_BACKEND;
+const socket = io.connect(URI_BACKEND)
+
 
 const TabloPage = () => {
   const [open, setOpen] = useState(false);
@@ -50,7 +52,7 @@ const TabloPage = () => {
 
 
   const getResult = async () => {
-    const response = await fetch(`https://tenis-backend.vercel.app/api/currentgame/currentgame/67e5c15fa1d92ba58cfd680d`)
+    const response = await fetch(`${URI_BACKEND}api/currentgame/currentgame/67e5c15fa1d92ba58cfd680d`)
     const resultats = await response.json();
     setResult1(resultats.result1)
     setResult2(resultats.result2)
@@ -65,19 +67,19 @@ const TabloPage = () => {
   }
 
   function getPlayers() {
-    axios.get(`https://tenis-backend-4rvf.onrender.com/api/players`).
+    axios.get(`${URI_BACKEND}api/players`).
       then(players => setPlayers(players.data))
       .catch(err => console.log(err))
   }
 
   function getTournaments() {
-    axios.get(`https://tenis-backend-4rvf.onrender.com/api/tournaments`).
+    axios.get(`${URI_BACKEND}api/tournaments`).
       then(tournaments => setTournaments(tournaments.data))
       .catch(err => console.log(err))
   }
 
   const getPlayer = async (id, num) => {
-    const response = await fetch(`https://tenis-backend-4rvf.onrender.com/api/players/${id}`)
+    const response = await fetch(`${URI_BACKEND}api/players/${id}`)
     const bla = await response.json();
     if (num == 1) {
       setPlayer1name(bla.name)
@@ -87,7 +89,7 @@ const TabloPage = () => {
   }
 
   const getTournament = async (id, num) => {
-    const response = await fetch(`https://tenis-backend-4rvf.onrender.com/api/tournaments/${id}`)
+    const response = await fetch(`${URI_BACKEND}api/tournaments/${id}`)
     const bla = await response.json();
     setTournamentName(bla.title)
   }

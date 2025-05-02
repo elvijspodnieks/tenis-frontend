@@ -17,6 +17,9 @@ export default [
       },
     },
     plugins: {
+      "node": true,
+    },
+    env: {
       'react-hooks': reactHooks,
       'react-refresh': reactRefresh,
     },

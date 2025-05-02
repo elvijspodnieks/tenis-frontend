@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Edit, Search, Trash2 } from "lucide-react";
 import axios from 'axios';
 import Modal from '../Modal';
+const URI_BACKEND = import.meta.env.VITE_URI_BACKEND;
 
 
 const PRODUCT_DATA = [
@@ -31,7 +32,7 @@ const ProductsTable = () => {
     }, []);
 
     const handleAddProduct = async () => {
-        const { success, message } = await fetch(`https://todo-rho-swart-35.vercel.app/api/players/`, {
+        const { success, message } = await fetch(`${URI_BACKEND}api/players/`, {
             method: "POST", // or "PATCH"
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ name: newProduct.name, surname: newProduct.surname, level: newProduct.level, games: newProduct.games }),
@@ -46,7 +47,7 @@ const ProductsTable = () => {
     };
 
     function getPlayers() {
-        axios.get(`https://todo-rho-swart-35.vercel.app/api/players`).
+        axios.get(`${URI_BACKEND}api/players`).
             then(players => setPlayers(players.data))
             .catch(err => console.log(err))
     }
