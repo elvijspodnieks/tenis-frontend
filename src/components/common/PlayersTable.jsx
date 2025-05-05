@@ -4,6 +4,7 @@ import { Edit, Search, Trash2 } from "lucide-react";
 import axios from 'axios';
 import Modal from '../Modal';
 const URI_BACKEND = "https://tenis-backend-4rvf.onrender.com/"
+//const URI_BACKEND = "http://localhost:5000/"
 
 
 const PRODUCT_DATA = [
@@ -32,7 +33,7 @@ const ProductsTable = () => {
     }, []);
 
     const handleAddProduct = async () => {
-        const { success, message } = await fetch(`${URI_BACKEND}api/players/`, {
+        const { success, message } = await fetch(`${URI_BACKEND}api/players`, {
             method: "POST", // or "PATCH"
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ name: newProduct.name, surname: newProduct.surname, level: newProduct.level, games: newProduct.games }),

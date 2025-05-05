@@ -6,6 +6,7 @@ import NewGame from '../components/forms/NewGame';
 import io from 'socket.io-client'
 import Sidebar from '../components/Sidebar';
 const URI_BACKEND = "https://tenis-backend-4rvf.onrender.com/"
+//const URI_BACKEND = "http://localhost:5000/"
 const socket = io.connect(URI_BACKEND)
 import { Plus, Minus } from 'lucide-react';
 

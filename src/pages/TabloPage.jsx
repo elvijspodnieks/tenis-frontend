@@ -5,6 +5,7 @@ import axios from 'axios';
 import { NavLink } from 'react-router-dom';
 import io from 'socket.io-client'
 const URI_BACKEND = "https://tenis-backend-4rvf.onrender.com/"
+//const URI_BACKEND = "http://localhost:5000/"
 const socket = io.connect(URI_BACKEND)
 
 
